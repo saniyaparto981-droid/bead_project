@@ -7,9 +7,11 @@ public class Blob implements IBlob{
 
     private ArrayList<IPoint> positions;
     private IPoint blobCenter;
+    private boolean checked;
 
     public Blob() {
         positions = new ArrayList<>();
+        checked=true;
     }
 
     // -------------------- Methods --------------------
@@ -68,4 +70,8 @@ public class Blob implements IBlob{
     public void setBlobCenter(IPoint blobCenter) {
         this.blobCenter = blobCenter;
     }
+
+    public void setValidation(boolean bool){this.checked=bool;}
+
+    public boolean getValidation(){return this.checked;}
 }

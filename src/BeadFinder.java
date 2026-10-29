@@ -8,27 +8,28 @@ import java.util.LinkedList;
 public class BeadFinder implements IBeadFinder {
 
 
-    private ArrayList<IBlob> Beads;
+    private LinkedList<IBlob> Beads;
     private Picture picture;
     private double tau;
     private LinkedList<IPoint> PointOfPicture;
-    private ArrayList<IPoint> BlobBeads;
 
-    public BeadFinder(Picture picture, double tau) {
+
+    public BeadFinder(Picture picture, double tau ,int min) {
 
         this.tau=tau;
         this.picture=picture;
-        Beads=new ArrayList<>();
+        Beads=new LinkedList<>();
         PointOfPicture =new LinkedList<>();
-        BlobBeads=new ArrayList<>();
+
 
         setPoints();
         setNeighbor();
+        gettingBeads(min);
 
     }
 
 
-    public ArrayList<IBlob> getBeads()
+    public LinkedList<IBlob> getBeads()
     {
         return this.Beads;
     }
@@ -62,6 +63,7 @@ public class BeadFinder implements IBeadFinder {
     public IBlob DfsSearcher(IPoint s ) {
 
         IBlob blob = factory.createBlob();
+        ArrayList<IPoint> BlobBeads=new ArrayList<>();
 
         LinkedList<IPoint> stack = new LinkedList<>();
         stack.push(s);
@@ -85,6 +87,7 @@ public class BeadFinder implements IBeadFinder {
         }
 
         blob.setPositions(BlobBeads);
+        blob.setBlobCenter();
         return blob;
     }
 

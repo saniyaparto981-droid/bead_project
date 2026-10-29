@@ -25,5 +25,9 @@ public interface IBlob
 
             IPoint getBlobCenter ();
 
+    void setValidation(boolean bool);
+
+    boolean getValidation();
+
 
     }
